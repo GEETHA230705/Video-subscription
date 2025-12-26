@@ -1,0 +1,36 @@
+body {
+    background: linear-gradient(to right, #fff3e6, #fde2c8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: Poppins, sans-serif;
+}
+
+.payment-box {
+    background: white;
+    padding: 40px;
+    border-radius: 18px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,.2);
+}
+
+.pay-btn {
+    margin-top: 20px;
+    padding: 12px 30px;
+    background: #d2691e;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+}
+/* SUBSCRIPTION PAGE BACKGROUND */
+.subscription-page {
+    min-height: 100vh;
+    background: url("/static/images/bg.jpg") no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

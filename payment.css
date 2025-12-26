@@ -1,0 +1,176 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: linear-gradient(120deg, #1a1a1a, #2c2c2c);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* PAYMENT CARD */
+.payment-card {
+    background: #ffffff;
+    width: 380px;
+    padding: 30px;
+    border-radius: 18px;
+    box-shadow: 0 0 30px rgba(255, 204, 0, 0.4);
+    animation: fadeIn 0.7s ease-in-out;
+    text-align: center;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px);}
+    to { opacity: 1; transform: translateY(0);}
+}
+
+/* TITLE */
+.payment-card h2 {
+    margin-bottom: 10px;
+    color: #ff9900;
+    font-size: 26px;
+}
+
+.payment-card p {
+    font-size: 15px;
+    margin-bottom: 20px;
+}
+
+/* RADIO BUTTONS */
+.payment-card label {
+    display: block;
+    background: #f7f7f7;
+    padding: 12px;
+    border-radius: 10px;
+    margin: 10px 0;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: 0.3s;
+}
+
+.payment-card label:hover {
+    border-color: #ff9900;
+    background: #fff8ec;
+}
+
+/* INPUT FIELDS */
+.payment-card input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    margin-top: 10px;
+    outline: none;
+    font-size: 14px;
+}
+
+.payment-card input:focus {
+    border-color: #ff9900;
+    box-shadow: 0 0 5px rgba(255,153,0,0.5);
+}
+
+/* PAY BUTTON */
+.pay-btn {
+    margin-top: 15px;
+    width: 100%;
+    background: linear-gradient(90deg, #ff9900, #ff6600);
+    color: white;
+    border: none;
+    padding: 14px;
+    border-radius: 12px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-weight: bold;
+}
+
+.pay-btn:hover {
+    background: linear-gradient(90deg, #ff6600, #ff9900);
+    transform: scale(1.03);
+}
+
+/* MESSAGE */
+.secure-text {
+    margin-top: 15px;
+    font-size: 14px;
+    color: green;
+    font-weight: bold;
+}
+
+/* UPI / CARD BOX */
+#upiBox, #cardBox {
+    margin-top: 15px;
+    animation: fadeIn 0.5s ease;
+}
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 450px) {
+    .payment-card {
+        width: 90%;
+    }
+}
+
+
+/* FULL PAGE PAYMENT BACKGROUND */
+body.payment-bg {
+    min-height: 100vh;
+    background:
+        linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+        url("/static/images/bg.jpg") no-repeat center center fixed;
+    background-size: cover;
+}
+/* ===== NAVBAR (Same as Dashboard) ===== */
+.navbar{
+    width:100%;
+    height:65px;
+    background:linear-gradient(135deg,white);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:40 20px;
+    position:fixed;
+    top:0;
+    left:0;
+    z-index:1000;
+    box-shadow:0 4px 15px rgba(0,0,0,0.2);
+}
+
+.logo{
+    color:orange;
+    font-size:24px;
+    font-weight:700;
+    letter-spacing:1px;
+}
+
+.nav-links a{
+    color: orange;
+    text-decoration:none;
+    margin-left:30px;
+    font-size:16px;
+    font-weight:600;
+    transition:0.3s;
+}
+
+.nav-links a:hover{
+    color:#ffe0b2;
+}
+
+/* push payment card down */
+.payment-card{
+    margin-top:100px;
+}
+
+/* ===== FOOTER ===== */
+footer{
+    position:fixed;
+    bottom:0;
+    width:100%;
+    background:linear-gradient(135deg,white);
+    color:orange;
+    text-align:center;
+    padding:12px;
+    font-size:14px;
+    box-shadow:0 -4px 15px rgba(0,0,0,0.2);
+}
+

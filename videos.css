@@ -1,0 +1,170 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+    
+}
+
+/* NAVBAR */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 40px;
+    background: #3b1f14;
+    color: white;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.nav-links a.active {
+    border-bottom: 2px solid #f4b183;
+}
+
+/* HEADER */
+.page-header {
+    text-align: center;
+    padding: 5px 20px;
+    background: linear-gradient(to right, #fff3e6, #fde2c8);
+}
+
+.page-header h1 {
+    font-size: 36px;
+    color: #3b1f14;
+}
+
+.page-header p {
+    color: #6b4a3a;
+    margin-top: 8px;
+}
+
+/* GRID */
+.video-grid {
+    padding: 50px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+    background: 
+        
+        url("/static/images/bg.jpg") no-repeat center center fixed;
+    background-size: cover;
+}
+
+/* CARD */
+.video-card {
+    background: #fffaf5;
+    border-radius: 18px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+    overflow: hidden;
+    transition: transform .3s;
+}
+
+.video-card:hover {
+    transform: translateY(-6px);
+}
+
+/* VIDEO */
+.secure-video {
+    width: 100%;
+    height: 190px;
+    background: black;
+    user-select: none;
+}
+
+/* THUMBNAIL */
+.thumbnail {
+    width: 100%;
+    height: 190px;
+    object-fit: cover;
+}
+
+/* INFO */
+.video-info {
+    padding: 15px;
+    text-align: center;
+}
+
+.video-info h3 {
+    font-size: 18px;
+    color: #3b1f14;
+}
+
+.price {
+    margin: 8px 0;
+    color: #b35c1e;
+    font-weight: 600;
+}
+
+/* BUTTONS */
+.unlock-btn {
+    display: inline-block;
+    padding: 10px 18px;
+    background: #d2691e;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+}
+
+.unlock-btn:hover {
+    background: #b35318;
+}
+
+.unlocked {
+    color: green;
+    font-weight: 600;
+}
+#success-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease;
+}
+
+.success-popup {
+    background: #ffffff;
+    padding: 30px 45px;
+    border-radius: 14px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #2e7d32;
+    animation: popFade 0.4s ease;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.35);
+}
+
+@keyframes popFade {
+    from {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+.expiry {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+    font-weight: bold;
+}
