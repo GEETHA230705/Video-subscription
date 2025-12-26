@@ -1,0 +1,20 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+<div class="navbar">
+    <h2>BAKERY STUDIO</h2>
+    <div>
+        <a href="/">Home</a>
+        <a href="/videos">Videos</a>
+        {% if session.get('email') %}
+        <a href="/logout">Logout</a>
+        {% else %}
+        <a href="/login">Login</a>
+        {% endif %}
+    </div>
+</div>
+
+<div class="hero">
+    <h1>Professional <span>Baking Video Platform</span></h1>
+    <p>Premium bakery tutorials crafted for serious learners</p>
+    <a href="/videos" class="btn">View Library</a>
+</div>

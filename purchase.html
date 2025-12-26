@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Purchase | {{ video.video_name }}</title>
+
+<style>
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(120deg,#fdfbfb,#ebedee);
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    width: 400px;
+    max-width: 90%;
+    text-align: center;
+}
+
+h2 {
+    margin-bottom: 15px;
+    color: #111827;
+}
+
+.price {
+    font-size: 22px;
+    color: #22c55e;
+    margin: 15px 0;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background: #22c55e;
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #16a34a;
+}
+
+a {
+    display: block;
+    margin-top: 20px;
+    color: #22c55e;
+    text-decoration: none;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+    <div class="card">
+        <h2>{{ video.video_name }}</h2>
+        <p>Unlock this premium video</p>
+        <p class="price">₹ {{ video.price }}</p>
+
+        <form method="post">
+            <button type="submit">Pay & Unlock</button>
+        </form>
+
+        <a href="/videos">← Back to videos</a>
+    </div>
+</div>
+
+</body>
+</html>

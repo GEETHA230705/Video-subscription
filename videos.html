@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bakery Studio | Videos</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='videos.css') }}">
+</head>
+<body>
+
+
+    {% if request.args.get('success') %}
+<div id="success-overlay">
+    <div class="success-popup">
+        🎉 {{ request.args.get('success') }} unlocked successfully!
+    </div>
+</div>
+{% endif %}
+
+
+
+
+
+
+
+<!-- NAVBAR -->
+<nav class="navbar">
+    <div class="logo">🍰 Bakery Studio</div>
+    <ul class="nav-links">
+        <li><a href="{{ url_for('home') }}">Home</a></li>
+        <li><a class="active" href="{{ url_for('videos') }}">Videos</a></li>
+        <li><a href="{{ url_for('logout') }}">Logout</a></li>
+    </ul>
+</nav>
+
+<!-- Flash messages -->
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    <div class="flash-messages">
+      {% for category, message in messages %}
+        <div class="flash {{ category }}">{{ message }}</div>
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endwith %}
+
+<!-- PAGE TITLE -->
+<section class="page-header">
+    <h1>Premium Baking Recipes</h1>
+    <p>Learn professional bakery recipes step by step</p>
+</section>
+
+<!-- VIDEOS GRID -->
+<section class="video-grid">
+
+{% for video in videos %}
+
+    <div class="video-card">
+
+        {% if video.unlocked %}
+            <video
+                class="secure-video"
+                controls
+                controlsList="nodownload noplaybackrate"
+                disablePictureInPicture
+                playsinline
+                oncontextmenu="return false"
+            >
+                <source src="{{ video.stream_url }}" type="video/mp4">
+            </video>
+        {% else %}
+            <img src="{{ video.thumbnail }}" class="thumbnail">
+        {% endif %}
+
+        <div class="video-info">
+            <h3>{{ video.name }}</h3>
+            <p class="price">₹ {{ video.price }}</p>
+
+            {% if video.unlocked %}
+    <span class="unlocked">✔ Unlocked</span>
+    <p class="expiry">
+        ⏳ Expires in <b>{{ video.days_left }}</b> days
+    </p>
+{% else %}
+    <a href="{{ url_for('subscribe', video_name=video.name|replace(' ','_')) }}" class="unlock-btn">
+        🔒 Unlock Video
+    </a>
+{% endif %}
+
+        </div>
+
+    </div>
+
+{% endfor %}
+
+</section>
+
+
+<!-- PROTECTION JS -->
+<script>
+document.addEventListener("keydown", function(e) {
+    if (
+        e.key === "F12" ||
+        (e.ctrlKey && e.shiftKey && ["I","J","C"].includes(e.key)) ||
+        (e.ctrlKey && ["U","S"].includes(e.key))
+    ) {
+        e.preventDefault();
+        alert("Screen capture & developer tools are disabled!");
+    }
+});
+
+document.addEventListener("contextmenu", e => e.preventDefault());
+</script>
+
+
+
+
+
+
+
+
+
+</body>
+</html>

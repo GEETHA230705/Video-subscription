@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Subscribe | Bakery Studio</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+    <div class="logo animated-logo">
+        🍰 Bakery Studio
+    </div>
+    <div class="nav-links">
+        <a href="{{ url_for('home') }}">Home</a>
+        <a href="{{ url_for('videos') }}">Videos</a>
+        <a href="{{ url_for('logout') }}">Logout</a>
+    </div>
+</div>
+
+<!-- Flash messages -->
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    <div class="flash-messages">
+      {% for category, message in messages %}
+        <div class="flash {{ category }}">{{ message }}</div>
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endwith %}
+
+<!-- SUBSCRIBE CONTENT -->
+<div class="subscribe-page">
+    <div class="subscribe-card">
+        <div class="subscribe-badge">PREMIUM</div>
+
+        <h2>Unlock {{ video.video_name }}</h2>
+        
+
+        <div class="price">₹ {{ video.price }}</div>
+
+        <p class="subscribe-desc">
+            Learn bakery techniques from professionals with full HD access.
+        </p>
+
+        <ul class="benefits">
+            <li>Full HD professional video</li>
+            <li>No ads, no distractions</li>
+            <li>Secure token-based streaming</li>
+            <li>No download or screen recording</li>
+        </ul>
+            <form action="{{ url_for('payment', video_name=video.video_name|replace(' ','_')) }}">
+                <button class="pay-btn">Proceed to Secure Payment</button>
+            </form>
+
+
+
+
+
+        <p class="secure-text">
+            🔒 100% Secure Payment • Instant Access
+        </p>
+    </div>
+</div>
+
+<!-- FOOTER -->
+
+    <footer>
+    © 2025 Bakery Studio. All Rights Reserved.
+    </footer>
+
+</body>
+</html>

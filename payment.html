@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+
+<head>
+    <title>Secure Payment</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='payment.css') }}">
+</head>
+<body class="payment-bg">
+
+    <!-- ===== NAVBAR ===== -->
+<div class="navbar">
+    <div class="logo animated-logo">
+        🍰 Bakery Studio
+    </div>
+    <div class="nav-links">
+        <a href="{{ url_for('home') }}">Home</a>
+        <a href="{{ url_for('videos') }}">Videos</a>
+        <a href="{{ url_for('logout') }}">Logout</a>
+    </div>
+</div>
+
+
+<div class="payment-card">
+    <h2>Secure Payment</h2>
+    <p>Unlock: <b>{{ video_name }}</b></p>
+
+    
+
+    <label><input type="radio" name="method" value="gpay" onclick="showUPI()"> Google Pay</label>
+    <label><input type="radio" name="method" value="phonepe" onclick="showUPI()"> PhonePe</label>
+    <label><input type="radio" name="method" value="card" onclick="showCard()"> Debit Card</label>
+
+    <div id="upiBox" style="display:none;">
+        <input type="password" id="upi_pin" maxlength="4" placeholder="Enter 4-digit UPI PIN">
+        <button class="pay-btn" onclick="pay('gpay')">Pay</button>
+    </div>
+
+    <div id="cardBox" style="display:none;">
+        <input type="text" id="card_number" placeholder="Card Number">
+        <input type="text" id="expiry" placeholder="MM/YY">
+        <input type="password" id="cvv" placeholder="CVV">
+        <button class="pay-btn" onclick="pay('card')">Pay</button>
+    </div>
+
+    <p id="msg" class="secure-text"></p>
+</div>
+</div>
+<script>
+function showUPI() {
+    upiBox.style.display="block";
+    cardBox.style.display="none";
+}
+function showCard() {
+    cardBox.style.display="block";
+    upiBox.style.display="none";
+}
+
+function pay(type) {
+    let data = new FormData();
+
+    if(type === "gpay"){
+        data.append("method","gpay");
+        data.append("upi_pin",document.getElementById("upi_pin").value);
+    }else{
+        data.append("method","card");
+        data.append("card_number",document.getElementById("card_number").value);
+        data.append("expiry",document.getElementById("expiry").value);
+        data.append("cvv",document.getElementById("cvv").value);
+    }
+
+    fetch("", {method:"POST", body:data})
+    .then(res=>res.json())
+    .then(res=>{
+        document.getElementById("msg").innerText = res.message;
+        if(res.status==="success"){
+            setTimeout(()=>window.location="/videos",3000);
+        }
+    });
+}
+</script>
+<!-- ===== FOOTER ===== -->
+
+
+
+</body>
+</html>

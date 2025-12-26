@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+<body>
+  <div class="admin-container">
+    
+    <h1>Admin Dashboard</h1>
+    <table>
+      <tr><th>Name</th><th>Email</th><th>Subscribed</th></tr>
+      {% for user in users %}
+      <tr>
+        <td>{{ user['name'] }}</td>
+        <td>{{ user['email'] }}</td>
+        <td>{{ user['subscribed'] }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+    <a href="/download_users" class="btn">Download Excel File</a> |
+    <a href="/logout" class="btn">Logout</a>
+  </div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

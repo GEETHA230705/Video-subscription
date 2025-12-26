@@ -1,0 +1,68 @@
+<body>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    <div id="flash-popup">
+      {% for category, message in messages %}
+        <div class="flash {{ category }}">{{ message }}</div>
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endwith %}
+
+
+
+
+
+
+
+
+<div class="auth-wrapper">
+    <div class="auth-card">
+
+        <h2>Welcome Back</h2>
+        <p class="auth-sub">Login to Bakery Studio</p>
+
+        <form method="POST">
+            <input type="email" name="email" placeholder="Email address" required>
+            <input type="password" name="password" placeholder="Password" required>
+
+            <button type="submit">Login</button>
+        </form>
+
+        <!-- Google icon login -->
+        <div class="google-login">
+            <a href="/google-login" title="Login with Google">
+                <img src="{{ url_for('static', filename='images/google-icon.jpg') }}">
+            </a>
+        </div>
+
+        <p class="switch">
+            New user? <a href="/register">Create an account</a>
+        </p>
+
+    </div>
+</div>
+
+
+
+<script>
+setTimeout(() => {
+    const popup = document.getElementById("flash-popup");
+    if (popup) {
+        popup.style.opacity = "0";
+    }
+}, 3000);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+</body>

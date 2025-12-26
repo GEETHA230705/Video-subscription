@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ video.name }}</title>
+
+
+
+
+
+    
+    <style>
+        body {
+            background-color: #111;
+            color: #fff;
+            text-align: center;
+        }
+        video {
+            width: 80%;
+            margin-top: 40px;
+        }
+    </style>
+    <script>
+        // Disable right-click
+        document.addEventListener('contextmenu', event => event.preventDefault());
+
+        // Disable Print Screen (Screenshot)
+        document.addEventListener('keyup', function(e) {
+            if (e.key == "PrintScreen") {
+                navigator.clipboard.writeText("");
+                alert("Screenshots are disabled!");
+            }
+        });
+
+        // Blur screen if trying to screen record
+        let recorderCheck = setInterval(() => {
+            let screen = window.screen;
+            if (screen.width !== window.innerWidth || screen.height !== window.innerHeight) {
+                document.body.innerHTML = "<h1>Recording Blocked</h1>";
+                clearInterval(recorderCheck);
+            }
+        }, 1000);
+    </script>
+</head>
+<body>
+   <script>
+/* Disable right click */
+document.addEventListener('contextmenu', e => e.preventDefault());
+
+/* Disable common download shortcuts */
+document.addEventListener('keydown', function(e) {
+    if (
+        e.ctrlKey && (e.key === 's' || e.key === 'u' || e.key === 'p') ||
+        e.key === 'F12'
+    ) {
+        e.preventDefault();
+    }
+});
+</script>
+<video controls controlsList="nodownload noplaybackrate"
+       disablePictureInPicture
+       oncontextmenu="return false;">
+    <source src="{{ video.video_path }}" type="video/mp4">
+</video>
+
+<div class="video-player">
+    <video controls
+           controlsList="nodownload noplaybackrate"
+           disablePictureInPicture
+           oncontextmenu="return false">
+        <source src="/stream/{{ video_name }}?token={{ token }}" type="video/mp4">
+    </video>
+</div>
+
+<script>
+document.addEventListener('contextmenu', e => e.preventDefault());
+document.addEventListener('keydown', e => {
+    if (e.ctrlKey || e.key === 'F12') e.preventDefault();
+});
+</script>
+
+
+
+</body>
+</html>
+
+
+
